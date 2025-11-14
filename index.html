@@ -18,27 +18,64 @@
         <a href="o-mnie.html" class="nav-button">O mnie</a>
         <a href="kontakt.html" class="nav-button">Kontakt</a>
         <a href="portfolio.html" class="nav-button">Portfolio</a>
+        <a href="umiejetnosci.html" class="nav-button">Umiejetnosci</a>
     </nav>
-    <footer class="footer">
-        <p>Copyright &COPY; 2025</p>
-    </footer>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            alert('Witaj na mojej stronie!');
-        });
-        const button = document.querySelector('.nav-button');
-        button.addEventListener('mouseenter', function() {
-            this.style.backgroundColor = '#662f5d';
-        });
-        button.addEventListener('mouseleave', function() {
-            this.style.backgroundColor = '#550A68A1';
-        });
+    <section class="container" style="width: 40%;">
+    <div class="slider-container" id="sliderContainer">
+            <div class="slides-wrapper">
+                <div class="slides" id="slides">
+                    <div class="slide">
+                        📱
+                        <div class="slide-text">Projekt 1: Aplikacja mobilna</div>
+                    </div>
+                    <div class="slide">
+                        💻
+                        <div class="slide-text">Projekt 2: Strona internetowa</div>
+                    </div>
+                    <div class="slide">
+                        🎨
+                        <div class="slide-text">Projekt 3: Design UI</div>
+                    </div>
+                    <div class="slide">
+                        🌐
+                        <div class="slide-text">Projekt 4: E-Commerce</div>
+                    </div>
+                    <div class="slide">
+                        ✨
+                        <div class="slide-text">Projekt 5: Logo i branding</div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
-        setInterval(() => {
-            let d = new Date();
-            document.querySelector('footer').textContent = "© Julia Gnatek | " + d.toLocaleString();
-        }, 1000);
-        
-    </script>
+        <div class="controls">
+            <button id="prevBtn">← Poprzedni</button>
+            <div class="dots" id="dots"></div>
+            <button id="nextBtn">Następny →</button>
+        </div>
+
+        <div class="slide-info">
+            <span class="counter" id="slideCounter">1 / 5</span>
+        </div>
+    </div>
+    </br></br></br>
+    
+    <div class="counter-box" id="visitBox">
+            <div>Liczba wizyt:</div>
+            <div class="counter-number" id="visitCount">1</div>
+        </div>
+
+        <button onclick="resetLicznik()">Resetuj licznik</button>
+    </div>
+    </section>
+    </br>
+    <button id="scrollToTopBtn">⬆️</button>
+    </br></br></br></br></br>
+
+    <footer class="footer">
+        <div class="clock" id="clock">Ładowanie...</div>
+        <div class="copyright">© 2025 Moje Portfolio. Wszystkie prawa zastrzeżone.</div>
+    </footer>
+    <script src="index.js"></script>
 </body>
 </html>

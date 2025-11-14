@@ -18,17 +18,51 @@
         <a href="index.html" class="nav-button">Strona główna</a>
         <a href="o-mnie.html" class="nav-button">O mnie</a>
         <a href="portfolio.html" class="nav-button">Portfolio</a>
+        <a href="umiejetnosci.html" class="nav-button">Umiejetnosci</a>
     </nav>
 
     <nav class="contacts">
         <h1>Kontakt:</h1></br>
         <h2>Tel: +48 791 311 107</h2></br>
-        <h2>E-mail: yummygaydrink@waifu.club</h2></br>
         <h2>Telegram: yummygaydrink</h2></br>
-        <h2>Instagram: yummygaydrink_</h2></br>
+        <h2>Instagram: yummygaydrink_</h2></br></br>
+        <h2>Możesz też uzupełnić dane poniżej!</h2>
     </nav>
+
+    <section class="container" style="width: 60%;">
+    <div class="success-message" id="successMessage">
+            ✓ Wiadomość wysłana pomyślnie! Dziękuję za kontakt.
+        </div>
+
+        <form id="contactForm">
+            <div class="form-group">
+                <label for="imie">Imię:</label>
+                <input type="text" id="imie" name="imie" placeholder="Twoje imię">
+                <div class="error-message" id="imieError">Pole wymagane</div>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" placeholder="twoj@email.com">
+                <div class="error-message" id="emailError">Pole wymagane</div>
+            </div>
+
+            <div class="form-group">
+                <label for="wiadomosc">Wiadomość:</label>
+                <textarea id="wiadomosc" name="wiadomosc" placeholder="Twoja wiadomość..."></textarea>
+                <div class="error-message" id="wiadomoscError">Pole wymagane</div>
+            </div>
+
+            <button type="submit">Wyślij</button>
+        </form>
+    </div>
+    </section>
+    <button id="scrollToTopBtn">⬆️</button>
+    </br></br></br></br>
     <footer class="footer">
-        <p>Copyright &COPY; 2025</p>
+        <div class="clock" id="clock">Ładowanie...</div>
+        <div class="copyright">© 2025 Moje Portfolio. Wszystkie prawa zastrzeżone.</div>
     </footer>
+    <script src="kontakt.js"></script>
 </body>
 </html>

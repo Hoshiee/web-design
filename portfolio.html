@@ -18,25 +18,78 @@
         <a href="index.html" class="nav-button">Strona główna</a>
         <a href="o-mnie.html" class="nav-button">O mnie</a>
         <a href="kontakt.html" class="nav-button">Kontakt</a>
+        <a href="umiejetnosci.html" class="nav-button">Umiejetnosci</a>
     </nav>
+    <section class="container" style="width: 60%;">
+    <div class="filters">
+            <button class="filter-btn active" data-filter="wszystkie">Wszystkie</button>
+            <button class="filter-btn" data-filter="web">Web</button>
+            <button class="filter-btn" data-filter="mobile">Mobile</button>
+            <button class="filter-btn" data-filter="design">Design</button>
+        </div>
 
-    <nav class="portfolio-section">
-        <h2>Moje Portfolio:</h2></br>
-        <div class="portfolio-item">
-            <h3>Projekt 1</h3>
-            <p>web-design</p>
+        <div class="gallery">
+            <div class="project-card" data-category="web">
+                <div class="project-image">💻</div>
+                <div class="project-content">
+                    <span class="project-category web">Web</span>
+                    <div class="project-title">Portfolio Strona</div>
+                    <div class="project-description">Nowoczesna strona portfolio z HTML, CSS i JavaScript.</div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="mobile">
+                <div class="project-image">📱</div>
+                <div class="project-content">
+                    <span class="project-category mobile">Mobile</span>
+                    <div class="project-title">Todo App</div>
+                    <div class="project-description">Aplikacja mobilna do zarządzania zadaniami w React Native.</div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="design">
+                <div class="project-image">🎨</div>
+                <div class="project-content">
+                    <span class="project-category design">Design</span>
+                    <div class="project-title">UI Kit</div>
+                    <div class="project-description">Zbiór komponentów UI do użytku w projektach.</div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="web">
+                <div class="project-image">🌐</div>
+                <div class="project-content">
+                    <span class="project-category web">Web</span>
+                    <div class="project-title">E-Commerce</div>
+                    <div class="project-description">Pełny sklep internetowy z integracją płatności.</div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="mobile">
+                <div class="project-image">🎮</div>
+                <div class="project-content">
+                    <span class="project-category mobile">Mobile</span>
+                    <div class="project-title">Game</div>
+                    <div class="project-description">Gra mobilna stworzona za pomocą Unity.</div>
+                </div>
+            </div>
+
+            <div class="project-card" data-category="design">
+                <div class="project-image">✨</div>
+                <div class="project-content">
+                    <span class="project-category design">Design</span>
+                    <div class="project-title">Branding</div>
+                    <div class="project-description">Identyfikacja wizualna i materiały marketingowe dla firmy.</div>
+                </div>
+            </div>
         </div>
-        <div class="portfolio-item">
-            <h3>Projekt 2</h3>
-            <p>‎ </p>
-        </div>
-        <div class="portfolio-item">
-            <h3>Projekt 3</h3>
-            <p>‎ </p>
-        </div>
-    </nav>
+    </div></section>
+
+    </br></br></br></br></br>
     <footer class="footer">
-        <p>Copyright &COPY; 2025</p>
+        <div class="clock" id="clock">Ładowanie...</div>
+        <div class="copyright">© 2025 Moje Portfolio. Wszystkie prawa zastrzeżone.</div>
     </footer>
+    <script src="portfolio.js"></script>
 </body>
 </html>
