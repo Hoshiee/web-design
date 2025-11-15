@@ -19,6 +19,7 @@
         <a href="kontakt.html" class="nav-button">Kontakt</a>
         <a href="portfolio.html" class="nav-button">Portfolio</a>
         <a href="umiejetnosci.html" class="nav-button">Umiejetnosci</a>
+        <a href="statystyki.html" class="nav-button">Statystyki</a>
     </nav>
     <section class="container" style="width: 40%;">
     <div class="slider-container" id="sliderContainer">
@@ -68,7 +69,57 @@
         <button onclick="resetLicznik()">Resetuj licznik</button>
     </div>
     </section>
+    <section class="container" style="width: 40%;">
+    <div class="loading" id="loading">
+            <div class="spinner"></div>
+            <p>Ładowanie danych pogody...</p>
+        </div>
+
+        <div class="weather-widget" id="weatherWidget" style="display: none;">
+            <div class="weather-emoji" id="weatherEmoji">☀️</div>
+            <div class="temperature" id="temperature">--°C</div>
+            <div class="weather-description" id="weatherDescription">Ładowanie...</div>
+            <div class="weather-details" id="weatherDetails">--</div>
+        </div>
+
+        <div class="error" id="error" style="display: none;">
+            ⚠️ Nie udało się pobrać danych pogodowych. Sprawdź połączenie internetowe i spróbuj przeładować stronę.
+        </div>
+        <div class="demo-section">
+            <h3>Dostępne warunki pogodowe:</h3>
+            <div class="weather-icons">
+                <span title="Słonecznie">☀️</span>
+                <span title="Część chmur">🌤️</span>
+                <span title="Pochmurnie">☁️</span>
+                <span title="Deszcz">🌧️</span>
+                <span title="Burza">⛈️</span>
+                <span title="Śnieg">❄️</span>
+            </div>
+        </div>
+    </div>
+    </section>
     </br>
+    <section class="container" style="width: 55%;">
+        <div>
+        <div class="section">
+            <h2>Moje statystyki</h2>
+            <div class="stats-container" id="statsContainer" style="height: 30%;">
+                <div class="stat-card">
+                    <div class="stat-number" id="stat1">0</div>
+                    <div class="stat-label">Projektów ukończonych</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat2">0</div>
+                    <div class="stat-label">Lat doświadczenia</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="stat3">0</div>
+                    <div class="stat-label">Zadowolonych klientów</div>
+                </div>
+            </div>
+        </div>
+    </section>
+        
     <button id="scrollToTopBtn">⬆️</button>
     </br></br></br></br></br>
 
@@ -77,5 +128,108 @@
         <div class="copyright">© 2025 Moje Portfolio. Wszystkie prawa zastrzeżone.</div>
     </footer>
     <script src="index.js"></script>
+    <script>
+        function animujStatystyki() {
+            const stat1 = document.getElementById('stat1');
+            const stat2 = document.getElementById('stat2');
+            const stat3 = document.getElementById('stat3');
+            const container = document.getElementById('statsContainer');
+
+            const observer = new IntersectionObserver(function(entries) {
+                if (entries[0].isIntersecting) {
+                    let count1 = 0, count2 = 0, count3 = 0;
+
+                    const interval = setInterval(function() {
+                        if (count1 < 12) count1++;
+                        if (count2 < 6 )count2++;
+                        if (count3 < 65) count3 += 5;
+
+                        stat1.textContent = count1;
+                        stat2.textContent = count2;
+                        stat3.textContent = count3;
+
+                        if (count1 === 12 && count2 === 6 && count3 === 65) {
+                            clearInterval(interval);
+                        }
+                    }, 30);
+
+                    observer.unobserve(container);
+                }
+            });
+
+            observer.observe(container);
+        }
+
+        animujStatystyki();
+
+        // pogoda
+
+        const loading = document.getElementById('loading');
+        const weatherWidget = document.getElementById('weatherWidget');
+        const errorDiv = document.getElementById('error');
+        const temperatureEl = document.getElementById('temperature');
+        const descriptionEl = document.getElementById('weatherDescription');
+        const emojiEl = document.getElementById('weatherEmoji');
+        const detailsEl = document.getElementById('weatherDetails');
+
+        function getWeatherEmoji(code) {
+            if (code === 0) return '☀️';
+            if (code === 1 || code === 2) return '🌤️';
+            if (code === 3) return '☁️';
+            if (code === 45 || code === 48) return '☁️';
+            if (code === 51 || code === 53 || code === 55) return '🌧️';
+            if (code === 61 || code === 63 || code === 65) return '🌧️';
+            if (code === 71 || code === 73 || code === 75) return '❄️';
+            if (code === 77) return '❄️';
+            if (code === 80 || code === 81 || code === 82) return '🌧️';
+            if (code === 85 || code === 86) return '❄️';
+            if (code === 95 || code === 96 || code === 99) return '⛈️';
+            return '🌤️';
+        }
+
+        function getWeatherDescription(code) {
+            if (code === 0) return 'Słonecznie';
+            if (code === 1 || code === 2) return 'Przeważnie słonecznie';
+            if (code === 3) return 'Pochmurnie';
+            if (code === 45 || code === 48) return 'Mgła';
+            if (code === 51 || code === 53 || code === 55) return 'Mżawka';
+            if (code === 61 || code === 63 || code === 65) return 'Deszcz';
+            if (code === 71 || code === 73 || code === 75) return 'Śnieg';
+            if (code === 77) return 'Śnieg';
+            if (code === 80 || code === 81 || code === 82) return 'Przelotne opady';
+            if (code === 85 || code === 86) return 'Przelotne opady śniegu';
+            if (code === 95 || code === 96 || code === 99) return 'Burza';
+            return 'Zmienna pogoda';
+        }
+
+        function fetchWeather() {
+            const url = 'https://api.open-meteo.com/v1/forecast?latitude=52.23&longitude=21.01&current_weather=true&timezone=auto';
+
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    loading.style.display = 'none';
+
+                    const weather = data.current_weather;
+                    const temp = Math.round(weather.temperature);
+                    const code = weather.weather_code;
+                    const windSpeed = Math.round(weather.windspeed);
+
+                    temperatureEl.textContent = temp + '°C';
+                    descriptionEl.textContent = getWeatherDescription(code);
+                    emojiEl.textContent = getWeatherEmoji(code);
+                    detailsEl.textContent = 'Wiatr: ' + windSpeed + ' km/h • Warszawa';
+
+                    weatherWidget.style.display = 'block';
+                })
+                .catch(error => {
+                    console.error('Błąd:', error);
+                    loading.style.display = 'none';
+                    errorDiv.style.display = 'block';
+                });
+        }
+
+        fetchWeather();
+        </script>
 </body>
 </html>
